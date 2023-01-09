@@ -4,7 +4,10 @@ from fastai.vision.all import *
 from duckduckgo_search import ddg_images
 from fastcore.all import *
 from fastdownload import download_url
+import pathlib
 
+plt = platform.system()
+if plt == 'Windows': pathlib.PosixPath = pathlib.WindowsPath
 
 #importation des données d'entrainement
 def search_images(term, max_images=200): return L(ddg_images(term, max_results=max_images)).itemgot('image')
